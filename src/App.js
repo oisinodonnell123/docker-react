@@ -10,7 +10,7 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <p>
-          Hot reloading is working successfully!
+          Hey Helen, how is your day going? 
         </p>
         <a
           className="App-link"
