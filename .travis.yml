@@ -5,3 +5,12 @@ before_install:
   - docker build -t oisinodonnell/docker-react -f Dockerfile.dev . 
 script: 
   - docker run oisinodonnell/docker-react npm run test -- --coverage
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-514344330145"
+  bucket_path:s3: "resources/environments/e-rk47cixps7/_runtime/_versions/docker/"
+  on:
+    branch: master
