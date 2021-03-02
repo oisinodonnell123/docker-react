@@ -4,7 +4,7 @@ services:
 before_install: 
   - docker build -t oisinodonnell/docker-react -f Dockerfile.dev . 
 script: 
-  - docker run oisinodonnell/docker-react npm run test -- --coverage
+  - docker run -e CI=true oisinodonnell/docker-react npm run test
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
@@ -14,3 +14,6 @@ deploy:
   bucket_path:s3: "resources/environments/e-rk47cixps7/_runtime/_versions/docker/"
   on:
     branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
